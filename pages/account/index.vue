@@ -5,8 +5,9 @@
   <div class="account">
 
     <div class="account__block">
-      <div class="title">Мои данные</div>
+      <div class="account__title">Мои данные</div>
       <personal-data/>
+      <div class="account__title">Мои объявления</div>
       <my-announcements/>
     </div>
 
@@ -47,6 +48,15 @@ definePageMeta({
 <style lang="scss" scoped>
 .account {
   padding: 0 $side-space-mobile;
+  width: calc(100% - 2*#{$side-space-mobile});
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: $fs--title;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+  }
 
   &__block {
     &:first-child {margin-top: 16px}

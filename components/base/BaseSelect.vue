@@ -191,7 +191,7 @@ $input-height: 28px;
     display: flex;
     position: relative;
     padding: 8px;
-    border: 1px solid $color--gray-light;
+    border: 1px solid $color--gray;
     border-radius: 8px;
     margin: 8px 0;
     background-color: white;

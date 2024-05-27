@@ -7,15 +7,14 @@
   <div class="create">
 
     <div class="create__form">
-      <div class="create__subtitle">Информация о товаре</div>
-      <base-select
-          title="Категория товара"
-          v-model="form.categories"
-          item-value="code"
-          item-text="name_ru"
-          :options="categoryStore.getList"
+
+      <div class="create__subtitle">Добавьте фото товара</div>
+      <base-photo-input
+          v-model="form.photoBuffers"
           multiple
       />
+
+      <div class="create__subtitle">Информация о товаре</div>
 
       <base-input
           title="Название товара"
@@ -26,6 +25,9 @@
           title="Опишите товар"
           v-model="form.description"
       />
+
+      <div class="create__subtitle">Выберите категории товара</div>
+            <categories-select v-model="form.categories" :options="categoryStore.getList"/>
 
       <div class="create__subtitle">Для какого возраста этот товар</div>
       <base-select
@@ -55,12 +57,6 @@
           number
       />
 
-
-      <div class="create__subtitle">Добавьте фото товара</div>
-      <base-photo-input
-          v-model="form.photoBuffers"
-          multiple
-      />
     </div>
 
     <div class="create__form create__submit">
@@ -84,9 +80,10 @@ import BasePhotoInput from "../../components/base/BasePhotoInput";
 import {useMyAnnouncementsStore} from "../../store/parent/myAnnouncements";
 import {useRouter} from "nuxt/app";
 import ThanksCreateModal from "../../components/common/create/thanksCreateModal";
+import CategoriesSelect from "../../components/common/create/categoriesSelect";
 
 definePageMeta({
-  middleware: "auth"
+  // middleware: "auth"
 })
 
 const router = useRouter();

@@ -157,7 +157,7 @@ $input-height: 32px;
   }
 
   &--default &__hit-box {
-    border: 1px solid $color--gray-light;
+    border: 1px solid $color--gray;
     background-color: white;
   }
 

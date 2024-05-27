@@ -4,7 +4,7 @@
         class="announcement-card__photos"
         :list="props.info.photos"
         :showCount="props.info.photos && props.info.photos.length > 1"
-        object-fit="contain"
+        object-fit="cover"
         rounded
     />
 
@@ -14,7 +14,7 @@
     </div>
 
     <button class="announcement-card__add">
-      <base-icon name="mdi-cart-plus" size="24"/>
+      <base-icon name="mdi-heart-outline" size="24"/>
     </button>
   </div>
 </template>
@@ -60,7 +60,7 @@ const props = defineProps({
     justify-content: center;
     top: 1rem;
     right: 1rem;
-    opacity: .7;
+    opacity: .5;
   }
 }
 </style>

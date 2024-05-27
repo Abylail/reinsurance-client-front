@@ -43,7 +43,6 @@ const activeModuleName = computed(() => route.name.split("-")[0])
     flex: 1;
     flex-direction: column;
     align-items: center;
-    font-weight: bold;
     line-height: 56px !important;
     color: $color--gray-dark;
   }

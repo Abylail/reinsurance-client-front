@@ -1,23 +1,20 @@
 import api from "~/composables/api";
 import cookie from "~/composables/cookie";
 import {defineStore} from "pinia";
-import {toRaw} from "vue";
 
 const state = () => ({
-    // Дети
-    children: null,
+    list: null,
 })
 
 const getters = {
-    // Дети
-    getChildren: state => state.children || [],
+    getList: state => state.list || [],
 }
 
 const actions = {
     // Получить детей
     async fetchAnnouncements() {
         const { err, body } = await api.get("/announcement/my")
-        if (!err) this.children = toRaw(body);
+        if (!err) this.list = body;
     },
 
     // Добавить ребенка
