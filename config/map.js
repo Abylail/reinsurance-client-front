@@ -1,0 +1,1 @@
+export const AlmatyCenterCoords = [43.23974123877094, 76.90200964930152];

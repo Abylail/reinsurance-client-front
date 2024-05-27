@@ -1,0 +1,36 @@
+// Цвета
+$color--blue: #004BFF;
+$color--blue-light: #bbcefd;
+$color--blue-super-light: #ddeff5;
+$color--blue-dark: #08358a;
+$color--background-white: white;
+$color--black: #222222;
+$color--gray-light: #efefef;
+$color--gray: #d0d0d0;
+$color--gray-dark: #868686;
+$color--red: #df3030;
+$color--orange: #ff6a00;
+$color--orange-light: #ffead9;
+$color--yellow: #ecc926;
+$color--green: #005400;
+
+// Скорость ани
+$transition: 0.15s;
+
+// Высота хедера
+$header-height: 60px;
+
+// Боковые отсупления
+$side-space-desktop: 25px;
+$side-space-mobile: 16px;
+
+// Максимальная ширина контенра
+$max-width: 1200px;
+
+// Размеры шрифтов
+$fs--nano: 0.75rem;
+$fs--mini: 0.875rem;
+$fs--default: 1rem;
+$fs--title: 1.25rem;
+$fs--sub-title: 1.25rem;
+$fs--big-title: 1.5rem;
