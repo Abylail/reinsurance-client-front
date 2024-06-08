@@ -1,11 +1,9 @@
 <template>
   <mobile-header :title="titleCategory">
     <template #right>
-      <base-button
-          class="announcement-search__go-basket"
-          size="mini"
-          type="orange"
-      >В корзину</base-button>
+       <button @click="router.push('/account/favorite')">
+         <base-icon color="red" name="mdi-heart" size="30"/>
+       </button>
     </template>
   </mobile-header>
 
@@ -18,12 +16,13 @@
 <script setup>
 import Categories from "../../components/common/search/categories";
 import MobileHeader from "../../components/common/layoutComponents/mobileHeader";
-import BaseButton from "../../components/base/BaseButton";
-import {useRoute} from "nuxt/app";
+import {useRoute, useRouter} from "nuxt/app";
 import {computed} from "vue";
 import {useCategoriesStore} from "../../store/categories";
+import BaseIcon from "../../components/base/BaseIcon";
 
 const route = useRoute();
+const router = useRouter();
 
 const categoryStore = useCategoriesStore();
 

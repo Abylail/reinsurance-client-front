@@ -2,6 +2,7 @@ import api from "~/composables/api";
 import cookie from "~/composables/cookie";
 import {defineStore} from "pinia";
 import {phoneValidation} from "~/helpers/phone";
+import {nextTick} from "vue";
 
 const state = () => ({
     // Информация клиента
@@ -14,6 +15,12 @@ const state = () => ({
 const getters = {
     // Информация клиента
     getClientData: state => state.clientData || {},
+
+    // Айди лайкнутых
+    getFavoriteIds: state => state.clientData?.favorite_ids || [],
+
+    // Корзина
+    getCartIds: state => state.clientData?.cart || [],
 
     // Авторизован ли
     isAuth: state => !!state.clientData,
@@ -77,6 +84,28 @@ const actions = {
     async sendSurvey(answer) {
         const { err, body } = await api.post("/toy/survey", {answer})
         if (!err && body) this.clientData = body;
+    },
+
+    toggleFavorite(id) {
+        let ids = this.getFavoriteIds.slice();
+
+        const idIndex = ids.indexOf(id);
+        if (idIndex >= 0) ids.splice(idIndex, 1);
+        else ids.push(id);
+
+        this.clientData = {...this.clientData, favorite_ids: ids};
+        nextTick(() => api.put("/parent/setFavorite", {favorite_ids: ids}));
+    },
+
+    toggleCart(id) {
+        let ids = this.getCartIds.slice();
+
+        const idIndex = ids.indexOf(id);
+        if (idIndex >= 0) ids.splice(idIndex, 1);
+        else ids.push(id);
+
+        this.clientData = {...this.clientData, cart: ids};
+        nextTick(() => api.put("/parent/setCart", {cart: ids}));
     },
 }
 

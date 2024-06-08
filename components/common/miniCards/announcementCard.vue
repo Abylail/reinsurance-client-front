@@ -1,5 +1,5 @@
 <template>
-  <div class="announcement-card">
+  <div class="announcement-card" @click="goDetails()">
     <base-mini-photos
         class="announcement-card__photos"
         :list="props.info.photos"
@@ -13,8 +13,9 @@
       <div class="announcement-card__title">{{ props.info.title }}</div>
     </div>
 
-    <button class="announcement-card__add">
-      <base-icon name="mdi-heart-outline" size="24"/>
+    <button class="announcement-card__add" @click.prevent.stop="toggleFavorite()">
+      <base-icon name="mdi-heart-outline" size="24" v-if="!isSelected"/>
+      <base-icon name="mdi-heart" size="24" v-else/>
     </button>
   </div>
 </template>
@@ -22,6 +23,9 @@
 <script setup>
 import BaseMiniPhotos from "../../base/BaseMiniPhotos";
 import BaseIcon from "../../base/BaseIcon";
+import {useAuthStore} from "../../../store/parent/auth";
+import {computed} from "vue";
+import {useRouter} from "nuxt/app";
 
 const props = defineProps({
   info: {
@@ -29,6 +33,19 @@ const props = defineProps({
     required: true
   },
 })
+
+const router = useRouter();
+
+const authStore = useAuthStore();
+const isSelected = computed(() => authStore.getFavoriteIds?.includes(props.info.id))
+const toggleFavorite = () => {
+  if (authStore.isAuth) authStore.toggleFavorite(props.info.id);
+  else router.replace({query: {login: ""}})
+}
+
+const goDetails = () => {
+  router.push(`/announcements/announcement-${props.info.id}`)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -42,6 +59,7 @@ const props = defineProps({
     width: 100%;
     background-color: white;
     border-radius: .75rem;
+    overflow: hidden;
   }
 
   &__info {
@@ -60,7 +78,7 @@ const props = defineProps({
     justify-content: center;
     top: 1rem;
     right: 1rem;
-    opacity: .5;
+    opacity: .7;
   }
 }
 </style>

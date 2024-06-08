@@ -59,7 +59,7 @@ const isSelected = (code = "") => props.showSelected && code === props.activeCod
     justify-content: center;
     align-items: center;
     color: $color--green;
-    padding: 8px;
+    padding: 4px;
     gap: 8px;
     text-align: center;
     background: white;

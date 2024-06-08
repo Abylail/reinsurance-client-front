@@ -3,7 +3,7 @@
     <div class="desktop-header__content">
       <div class="desktop-header__left">
         <nuxt-link to="/main">
-          <nuxt-img class="desktop-header__logo" src="/logo-long2.png" alt="logo"/>
+          <nuxt-img class="desktop-header__logo" src="/logo.svg" alt="logo"/>
         </nuxt-link>
       </div>
       <div class="desktop-header__right">

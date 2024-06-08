@@ -83,7 +83,7 @@ import ThanksCreateModal from "../../components/common/create/thanksCreateModal"
 import CategoriesSelect from "../../components/common/create/categoriesSelect";
 
 definePageMeta({
-  // middleware: "auth"
+  middleware: "auth"
 })
 
 const router = useRouter();
