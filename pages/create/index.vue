@@ -1,8 +1,5 @@
 <template>
-  <mobile-header
-      title="Создание объявления"
-      lang-switch
-  />
+  <mobile-header title="Создание объявления"/>
 
   <div class="create">
 

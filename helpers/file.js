@@ -1,7 +1,7 @@
 export const fileToBase64 = (file) => new Promise(resolve => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
+    reader.onloadend = () => resolve(reader.result);
     reader.onerror = error => resolve(null);
 });
 
@@ -35,6 +35,10 @@ export function resizeImage(base64Str, maxSize = 700) {
       let ctx = canvas.getContext('2d')
       ctx.drawImage(img, 0, 0, width, height)
       resolve(canvas.toDataURL())
+    }
+    img.onerror = (event) => {
+      console.log(event)
+      resolve(null);
     }
   })
 }

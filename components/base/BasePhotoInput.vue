@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <input ref="inputElement" type="file" accept="image/*" v-show="false" @change="inputHandle($event?.target?.files[0])"/>
+    <input ref="inputElement" type="file" :accept="acceptFiles" v-show="false" @change="inputHandle($event?.target?.files[0])"/>
   </div>
 </template>
 
@@ -42,13 +42,15 @@ const props = defineProps({
   },
   maxWidth: {
     type: Number,
-    default: 400
+    default: 600
   },
   maxCount: {
     type: Number,
     default: 3
   }
 });
+
+const acceptFiles = "image/png, image/jpeg, image/jpg, image/gif, image/bmp, image/tiff, image/x-icon, image/svg+xml, image/webp, image/xxx";
 
 const selfLoading = ref(false);
 const inputElement = ref(null);
@@ -78,10 +80,11 @@ const inputHandle = async (file) => {
     selfLoading.value = false;
     return alert("Поврежденный файл");
   }
-  const optimizedImage = await resizeImage(base64File, props.maxWidth)
+  const optimizedImage = await resizeImage(base64File, props.maxWidth);
   selfLoading.value = false;
 
   inputElement.value.value = "";
+  if (!optimizedImage) return alert("Извините, не могу принять ваш файл :(")
   emit("update:modelValue", [...(props.modelValue || []), optimizedImage]);
 }
 
