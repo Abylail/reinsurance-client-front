@@ -15,7 +15,7 @@
 
     <button class="announcement-card__add" @click.prevent.stop="toggleFavorite()">
       <base-icon name="mdi-heart-outline" size="24" v-if="!isSelected"/>
-      <base-icon name="mdi-heart" size="24" v-else/>
+      <base-icon name="mdi-heart" size="24" color="red" v-else/>
     </button>
   </div>
 </template>

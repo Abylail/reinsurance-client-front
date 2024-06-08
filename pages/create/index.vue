@@ -60,7 +60,7 @@
     </div>
 
     <div class="create__form create__submit">
-      <base-button :disabled="!canSubmit" full-width @click="submitHandle()">Создать объявление</base-button>
+      <base-button :disabled="!canSubmit || isLoading" :loading="isLoading" full-width @click="submitHandle()">Создать объявление</base-button>
     </div>
 
   </div>

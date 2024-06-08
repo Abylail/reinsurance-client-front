@@ -42,11 +42,11 @@ const props = defineProps({
   },
   maxWidth: {
     type: Number,
-    default: 600
+    default: 400
   },
   maxCount: {
     type: Number,
-    default: 5
+    default: 3
   }
 });
 

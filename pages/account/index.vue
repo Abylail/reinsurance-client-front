@@ -7,6 +7,15 @@
     <div class="account__block">
       <div class="account__title">Мои данные</div>
       <personal-data/>
+
+      <base-go-button
+          class="account__go-favorite"
+          title="Мои избранные"
+          icon="mdi-heart"
+          type="bright"
+          @click="router.push('/account/favorite')"
+      />
+
       <div class="account__title">Мои объявления</div>
       <my-announcements/>
     </div>
@@ -25,8 +34,8 @@ import BaseButton from "../../components/base/BaseButton";
 import {useRouter} from "nuxt/app";
 import MyAnnouncements from "../../components/common/account/myAnnouncements";
 import {ref} from "vue";
+import BaseGoButton from "../../components/base/BaseGoButton";
 const authStore = useAuthStore();
-
 const openAuth = ref(false);
 
 // Перейти в детализацию записи
@@ -77,6 +86,10 @@ definePageMeta({
   &__auth-text {
     color: $color--gray-dark;
     margin: 12px 0;
+  }
+
+  &__go-favorite {
+    margin-top: 1rem;
   }
 
 }

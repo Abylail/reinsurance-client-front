@@ -1,13 +1,13 @@
 <template>
   <mobile-header :title="info.title" go-back="/announcements"/>
   <div class="ann-details">
-    <base-mini-photos v-if="info.photos?.length" :list="info.photos"/>
+    <base-mini-photos class="ann-details__photos" v-if="info.photos?.length" :list="info.photos" full-on-click/>
     <div class="ann-details__main-content container--white">
       <h1 class="ann-details__title">{{ info.title }}</h1>
       <p class="ann-details__description">{{ info.description }}</p>
       <h2 class="ann-details__price">{{ info.price?.toLocaleString() }} ₸</h2>
       <div class="ann-details__actions">
-        <base-button v-if="!isInCart" type="yellow" full-width @click="toggleCart()">Добавить в корзину +</base-button>
+        <base-button v-if="!isInCart" type="orange" full-width @click="toggleCart()">Добавить в корзину +</base-button>
         <base-button v-else type="outline" full-width @click="router.push('/basket')">В корзину</base-button>
         <button class="ann-details__actions-favorite" @click="toggleFavorite()">
           <base-icon name="mdi-heart-outline" size="30" color="red" v-if="!isFavorite"/>
@@ -82,6 +82,10 @@ const usageAge = computed(() => {
     flex-direction: column;
     gap: .25rem;
     margin-bottom: 1rem;
+  }
+
+  &__photos {
+    aspect-ratio: 4/3;
   }
 
   &__title {

@@ -53,6 +53,7 @@ const fetchMore = async () => {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  margin: .5rem 0;
 
 }
 </style>

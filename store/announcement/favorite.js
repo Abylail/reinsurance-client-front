@@ -2,6 +2,8 @@ import {defineStore} from "pinia";
 import {useAuthStore} from "~/store/parent/auth";
 import api from "~/composables/api";
 
+const basketKey = "toyCart";
+
 const state = () => ({
     list: [],
 
@@ -15,10 +17,10 @@ const getters = {
 
 const actions = {
     // Получить игрущки из корзины
-    async fetchCart() {
+    async fetchFavorite() {
         if (process.server) return;
         const authStore = useAuthStore();
-        const ids = authStore.getCartIds || [];
+        const ids = authStore.getFavoriteIds || [];
         if (this.lastIds === JSON.stringify(ids)) return;
         if (!ids.length) this.list = [];
         const { body, err } = await api.post("/announcement/list", {ids: ids});
@@ -29,6 +31,6 @@ const actions = {
     },
 }
 
-export const useCartStore = defineStore("cart", {
+export const useFavoriteStore = defineStore("favorite", {
     state, getters, actions
 })

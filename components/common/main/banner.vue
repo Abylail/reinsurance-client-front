@@ -1,13 +1,13 @@
 <template>
   <div class="banner" :class="[{'banner--mobile': !$device.isDesktop}, {'banner--desktop': $device.isDesktop}]">
     <div class="banner__actions">
-      <a
-          class="banner-go-prices"
-          href="#prices"
-      >Купить</a>
       <button
-          class="banner-go-catalog"
-          @click="goLessons()"
+          class="banner-go-prices"
+          @click="router.push('/announcements')"
+      >Купить</button>
+      <button
+          class="banner-go-create"
+          @click="router.push('/create')"
       >Продать</button>
     </div>
   </div>
@@ -18,9 +18,6 @@ import {useRouter} from "nuxt/app";
 const { $device } = useNuxtApp();
 
 const router = useRouter();
-const goLessons = () => {
-  router.push("/toys")
-}
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +51,7 @@ const goLessons = () => {
     border-radius: 10px;
   }
 
-  .banner-go-catalog {
+  .banner-go-create {
     background-color: #F9705A;
     color: white;
     width: 120px;
@@ -98,7 +95,7 @@ const goLessons = () => {
     border-radius: 10px;
   }
 
-  .banner-go-catalog {
+  .banner-go-create {
     background-color: #F9705A;
     color: white;
     font-size: $fs--title;
