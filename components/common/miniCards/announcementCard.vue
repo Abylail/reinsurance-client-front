@@ -80,5 +80,16 @@ const goDetails = () => {
     right: 1rem;
     opacity: .7;
   }
+
+  &__title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1;
+    padding-top: .2rem;
+    color: $color--gray-dark
+  }
 }
 </style>

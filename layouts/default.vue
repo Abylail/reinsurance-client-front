@@ -14,6 +14,11 @@
 
   <auth-modal v-model:open="isAuthModal"/>
 
+  <!-- Службв поддержки -->
+  <a class="default-layout__help" href="https://wa.me/77753862246" target="_blank" title="Помощь">
+    <base-icon name="mdi-chat-question-outline" size="30"/>
+  </a>
+
 </template>
 
 <script setup>
@@ -23,6 +28,7 @@ import {computed} from "vue";
 import {useRoute, useRouter} from "nuxt/app";
 import AuthModal from "../components/common/auth/authModal";
 import {useAuthStore} from "../store/parent/auth";
+import BaseIcon from "../components/base/BaseIcon";
 const { $device } = useNuxtApp();
 
 const authStore = useAuthStore();
@@ -57,5 +63,20 @@ useSeoMeta({
   padding-bottom: 100px;
   background-color: $color--gray-light;
   min-height: calc(#{100vh} - 100px);
+}
+
+.default-layout {
+
+  &__help {
+    background: white;
+    position: fixed;
+    bottom:  6rem;
+    right:  1rem;
+    padding: .5rem;
+    border-radius: 4rem;
+    color: $color--green;
+    border: 1px solid $color--green;
+  }
+
 }
 </style>

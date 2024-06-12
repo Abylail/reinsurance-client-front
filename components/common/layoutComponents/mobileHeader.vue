@@ -91,6 +91,9 @@ const isThreeCols = computed(() => (slots.left || props.goBack) && showRight.val
     flex-direction: row;
     align-items: center;
     font-size: $fs--title;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__right {

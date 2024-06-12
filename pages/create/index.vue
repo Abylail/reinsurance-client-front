@@ -46,13 +46,15 @@
           v-model="form.use_experience"
       />
 
-      <div class="create__subtitle">Напишите минимальную цену<br>за которую не жалко :)</div>
+      <div class="create__subtitle">Напишите минимальную цену<br>за которую не жалко :)<br/><br/>Оплату вы получите на личную карту</div>
 
       <base-input
           title="Ваша цена"
           v-model="form.price"
           number
       />
+
+      <div class="create__subtitle">Мы удерживаем 20% от оплаты для доставки</div>
 
     </div>
 

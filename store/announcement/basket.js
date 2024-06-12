@@ -27,6 +27,13 @@ const actions = {
             this.lastIds = JSON.stringify(ids);
         }
     },
+
+    // Купить
+    async buy({ids, needDisinfected}) {
+        const { body, err } = await api.post("/announcement/buy", {ids: ids, needDisinfected});
+        if (!err) this.list = [];
+        return !err;
+    },
 }
 
 export const useCartStore = defineStore("cart", {

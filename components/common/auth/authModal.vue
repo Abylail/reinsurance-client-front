@@ -117,7 +117,6 @@ const submitOtp = async () => {
   if (isSuccess) {
     analSuccessLogin()
     successLogin();
-    await toySubscribeStore.fetchSubscribe(true);
   }
   else {
     errorLogin()

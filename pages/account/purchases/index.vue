@@ -1,12 +1,13 @@
 <template>
-  <mobile-header title="Избранные" go-back="/account"/>
-  <div class="favorite">
+  <mobile-header title="Мои покупки" go-back="/account"/>
+  <div class="purchases">
     <base-loader v-if="isLoading" center-horizontal/>
-    <div v-else-if="!favoriteList.length" class="favorite__empty">У вас нет избранных<br/>Неужели вам ничего не приглянулось?</div>
-    <div v-else class="basket__list container--thin">
+    <div v-else-if="!purchases.length" class="purchases__empty">Вы еще ничего не покупали<br/>Желаем вам классных покупок!</div>
+    <div v-else class="purchases__list container--thin">
       <announcement-action-card
-          v-for="item in favoriteList" :key="item.id"
+          v-for="item in purchases" :key="item.id"
           :info="item"
+          hide-actions
       />
     </div>
   </div>
@@ -15,8 +16,8 @@
 <script setup>
 import MobileHeader from "../../../components/common/layoutComponents/mobileHeader";
 import {computed, onMounted, ref} from "vue";
-import {useFavoriteStore} from "../../../store/announcement/favorite";
 import BaseLoader from "../../../components/base/BaseLoader";
+import {usePurchasesStore} from "../../../store/announcement/purchases";
 import AnnouncementActionCard from "../../../components/common/miniCards/announcementActionCard";
 
 definePageMeta({
@@ -24,21 +25,22 @@ definePageMeta({
 })
 
 const isLoading = ref(true);
-const favoriteStore = useFavoriteStore();
-const favoriteList = computed(() => favoriteStore.getList);
-const fetchFavorite = async () => {
+const purchasesStore = usePurchasesStore();
+const purchases = computed(() => purchasesStore.getList);
+
+const fetchPurchases = async () => {
   isLoading.value = true;
-  await favoriteStore.fetchFavorite();
+  await purchasesStore.fetchList();
   isLoading.value = false;
 }
 
 onMounted(() => {
-  fetchFavorite();
+  fetchPurchases();
 })
 </script>
 
 <style lang="scss" scoped>
-.favorite {
+.purchases {
 
   &__empty {
     text-align: center;

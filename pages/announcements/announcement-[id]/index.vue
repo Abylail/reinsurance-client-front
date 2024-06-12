@@ -4,7 +4,7 @@
     <base-mini-photos class="ann-details__photos" v-if="info.photos?.length" :list="info.photos" full-on-click/>
     <div class="ann-details__main-content container--white">
       <h1 class="ann-details__title">{{ info.title }}</h1>
-      <p class="ann-details__description">{{ info.description }}</p>
+      <p class="ann-details__description"><base-cut-text :text="info.description"/></p>
       <h2 class="ann-details__price">{{ info.price?.toLocaleString() }} ₸</h2>
       <div class="ann-details__actions">
         <base-button v-if="!isInCart" type="orange" full-width @click="toggleCart()">Добавить в корзину +</base-button>
@@ -23,7 +23,7 @@
       </div>
       <div class="ann-details__info-block">
         <div class="ann-details__hint">От владеца</div>
-        <p class="ann-details__description">{{ info.use_experience }}</p>
+        <p class="ann-details__description"><base-cut-text :text="info.use_experience"/></p>
       </div>
     </div>
   </div>
@@ -38,6 +38,7 @@ import {computed} from "vue";
 import BaseButton from "../../../components/base/BaseButton";
 import BaseIcon from "../../../components/base/BaseIcon";
 import {useAuthStore} from "../../../store/parent/auth";
+import BaseCutText from "../../../components/base/BaseCutText";
 const nuxtApp = useNuxtApp();
 
 const route = useRoute();

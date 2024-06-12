@@ -9,11 +9,19 @@
       <personal-data/>
 
       <base-go-button
-          class="account__go-favorite"
+          class="account__go"
           title="Мои избранные"
           icon="mdi-heart"
           type="bright"
           @click="router.push('/account/favorite')"
+      />
+
+      <base-go-button
+          class="account__go"
+          title="Мои покупки"
+          icon="mdi-cart-variant"
+          type="bright"
+          @click="router.push('/account/purchases')"
       />
 
       <div class="account__title">Мои объявления</div>
@@ -88,7 +96,7 @@ definePageMeta({
     margin: 12px 0;
   }
 
-  &__go-favorite {
+  &__go {
     margin-top: 1rem;
   }
 

@@ -46,7 +46,7 @@ const props = defineProps({
   },
   maxCount: {
     type: Number,
-    default: 3
+    default: 5
   }
 });
 

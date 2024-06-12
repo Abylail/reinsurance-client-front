@@ -1,7 +1,5 @@
 <template>
-  <span class="base-cut-text" v-show="props.text">
-    {{ preparedText }}
-  </span>
+  <pre class="base-cut-text" v-show="props.text" v-html="preparedText"/>
   <span
       class="base-cut-text__show-all"
       v-if="needCut"
@@ -38,6 +36,7 @@ const preparedText = computed(() => {
 
 <style lang="scss" scoped>
 .base-cut-text {
+  white-space: pre-wrap;
 
   &__show-all {
     color: $color--blue;
