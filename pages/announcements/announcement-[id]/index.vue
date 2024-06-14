@@ -17,6 +17,10 @@
     </div>
 
     <div class="ann-details__main-content container--white">
+      <div class="ann-details__info-block" v-if="info.condition">
+        <div class="ann-details__hint">Состояние {{info.condition}} / 5</div>
+        <base-rating :model-value="info.condition"/>
+      </div>
       <div class="ann-details__info-block">
         <div class="ann-details__hint">Возраст</div>
         <p class="ann-details__description">{{ usageAge }}</p>
@@ -39,6 +43,7 @@ import BaseButton from "../../../components/base/BaseButton";
 import BaseIcon from "../../../components/base/BaseIcon";
 import {useAuthStore} from "../../../store/parent/auth";
 import BaseCutText from "../../../components/base/BaseCutText";
+import BaseRating from "../../../components/base/BaseRating";
 const nuxtApp = useNuxtApp();
 
 const route = useRoute();
@@ -50,12 +55,14 @@ await announcementStore.fetchOne(route.params.id);
 const authStore = useAuthStore();
 const isFavorite = computed(() => authStore.getFavoriteIds?.includes(info.value.id))
 const toggleFavorite = () => {
+  nuxtApp.$a.toggleFavorite();
   if (authStore.isAuth) authStore.toggleFavorite(info.value.id);
   else router.replace({query: {login: ""}})
 }
 
 const isInCart = computed(() => authStore.getCartIds?.includes(info.value.id))
 const toggleCart = () => {
+  nuxtApp.$a.toggleCart();
   if (authStore.isAuth) authStore.toggleCart(info.value.id);
   else router.replace({query: {login: ""}})
 }

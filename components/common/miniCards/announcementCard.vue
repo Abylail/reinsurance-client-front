@@ -11,6 +11,10 @@
     <div class="announcement-card__info">
       <div class="announcement-card__price">{{ props.info.price.toLocaleString() }} ₸</div>
       <div class="announcement-card__title">{{ props.info.title }}</div>
+      <base-rating
+          v-if="props.info.condition"
+          :model-value="props.info.condition"
+      />
     </div>
 
     <button class="announcement-card__add" @click.prevent.stop="toggleFavorite()">
@@ -26,6 +30,8 @@ import BaseIcon from "../../base/BaseIcon";
 import {useAuthStore} from "../../../store/parent/auth";
 import {computed} from "vue";
 import {useRouter} from "nuxt/app";
+import BaseRating from "../../base/BaseRating";
+const {$a} = useNuxtApp();
 
 const props = defineProps({
   info: {
@@ -39,6 +45,7 @@ const router = useRouter();
 const authStore = useAuthStore();
 const isSelected = computed(() => authStore.getFavoriteIds?.includes(props.info.id))
 const toggleFavorite = () => {
+  $a.toggleFavorite();
   if (authStore.isAuth) authStore.toggleFavorite(props.info.id);
   else router.replace({query: {login: ""}})
 }

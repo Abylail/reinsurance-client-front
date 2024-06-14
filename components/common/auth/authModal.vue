@@ -44,6 +44,7 @@ import BaseInput from "../../base/BaseInput";
 import OtpInput from "./otpInput";
 import {phonePreparing} from "../../../helpers/phone";
 import {sendCode, successLogin as analSuccessLogin, errorLogin} from "../../../utlis/analitics";
+const {$a} = useNuxtApp();
 
 const nuxtApp = useNuxtApp()
 
@@ -115,6 +116,7 @@ const submitOtp = async () => {
   isLoading.value = false;
 
   if (isSuccess) {
+    $a.auth()
     analSuccessLogin()
     successLogin();
   }

@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     public: {
       BACKEND_URL: process.env.BACKEND_URL,
       CDN_URL: process.env.CDN_URL,
+      MIXPANEL_TOKEN: process.env.MIXPANEL_TOKEN,
     }
   },
 

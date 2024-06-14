@@ -36,6 +36,7 @@ import {computed} from "vue";
 import BaseIcon from "../../base/BaseIcon";
 import {useAuthStore} from "../../../store/parent/auth";
 import BaseButton from "../../base/BaseButton";
+const {$a} = useNuxtApp();
 
 const props = defineProps({
   info: {
@@ -63,11 +64,13 @@ const statusText = computed(() => {
 
 const isFavorite = computed(() => authStore.getFavoriteIds?.includes(props.info.id))
 const toggleFavorite = () => {
+  $a.toggleFavorite();
   authStore.toggleFavorite(props.info.id);
 }
 
 const isInCart = computed(() => authStore.getCartIds?.includes(props.info.id))
 const toggleCart = () => {
+  $a.toggleCart();
   authStore.toggleCart(props.info.id);
 }
 </script>

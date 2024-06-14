@@ -38,7 +38,7 @@ const actions = {
     async fetchListMore() {
         if (!this.haveMore) return;
         ++this.page;
-        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: this.page * pageCount, status: "active"}});
+        const { body, err } = await api.get("/announcement/list", {params: {...this.searchParams, limit: pageCount, offset: this.page * pageCount, status: "active"}});
         this.list = [...this.list, ...body];
         if (body.length < pageCount) this.haveMore = false;
     },
