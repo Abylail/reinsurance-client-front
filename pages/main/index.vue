@@ -5,7 +5,7 @@
       <span>Kidrent</span>
     </div>
   </mobile-header>
-  <div :class="['main-page', {'main-page--mobile': !$device.isDesktop}, {'main-page--desktop': $device.isDesktop}]">,
+  <div :class="['main-page', {'main-page--mobile': !$device.isDesktop}, {'main-page--desktop': $device.isDesktop}]">
 
     <div class="main-page-top">
       <banner/>
