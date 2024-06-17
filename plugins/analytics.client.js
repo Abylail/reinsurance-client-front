@@ -7,6 +7,7 @@ const createEmpty = () => ({
     auth: () => {},
     toggleCart: () => {},
     toggleFavorite: () => {},
+    create: () => {},
 })
 
 export default defineNuxtPlugin(async nuxtApp => {
@@ -36,6 +37,10 @@ export default defineNuxtPlugin(async nuxtApp => {
 
         toggleFavorite: () => {
             mixpanel.track("toggleFavorite");
+        },
+
+        create: () => {
+            mixpanel.track("create");
         },
     })
 })

@@ -16,6 +16,7 @@ const createCookie = name => {
 const cookieService = {
     userToken: createCookie("userToken"),
     lang: createCookie("lang"),
+    city: createCookie("city"),
 }
 
 export default cookieService

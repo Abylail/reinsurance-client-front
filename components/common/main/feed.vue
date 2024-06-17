@@ -21,12 +21,19 @@ import {ref} from "vue";
 import AnnouncementCard from "../miniCards/announcementCard";
 import BaseLoader from "../../base/BaseLoader";
 
+const props = defineProps({
+  pagination: {
+    type: Boolean,
+    default: true
+  }
+})
+
 const feed = useFeedStore();
 await feed.fetchListInit();
 
 const isLoading = ref(false);
 const fetchMore = async (page) => {
-  if (isLoading.value) return;
+  if (isLoading.value || !props.pagination) return;
   isLoading.value = true;
   await feed.fetchListMore(page);
   isLoading.value = false;
@@ -41,7 +48,7 @@ const fetchMore = async (page) => {
   &__list {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
   &__item {

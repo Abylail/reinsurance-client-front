@@ -32,7 +32,7 @@ const actions = {
     async fetchListMore(page) {
         if (!this.haveMore || page <= this.page) return;
         this.page = page;
-        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: page * pageCount, status: "active"}});
+        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: (page * pageCount)+1, status: "active"}});
         this.list = [...this.list, ...body];
         if (body.length < pageCount) this.haveMore = false;
     },

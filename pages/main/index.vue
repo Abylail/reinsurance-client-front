@@ -5,16 +5,29 @@
       <span>Kidrent</span>
     </div>
   </mobile-header>
-  <div :class="[{'main-page--mobile': !$device.isDesktop}, {'main-page--desktop': $device.isDesktop}]">
+  <div :class="['main-page', {'main-page--mobile': !$device.isDesktop}, {'main-page--desktop': $device.isDesktop}]">,
 
     <div class="main-page-top">
       <banner/>
     </div>
 
-    <categories class="container"/>
+    <div class="container main-page-block">
+      <categories :show-all-category="false"/>
+    </div>
 
-    <feed/>
+    <my-city class="container main-page-city main-page-block"/>
 
+    <div class="main-page-title container">Новейшие товары</div>
+    <feed :pagination="false"/>
+
+    <div class="container">
+      <base-go-button
+        title="В каталог"
+        icon="mdi-view-grid-outline"
+        type="bright"
+        @click="router.push('/announcements')"
+      />
+    </div>
   </div>
 </template>
 
@@ -25,6 +38,8 @@ import {useRouter} from "nuxt/app";
 import Categories from "../../components/common/search/categories";
 import {useFeedStore} from "../../store/main/feed";
 import Feed from "../../components/common/main/feed";
+import MyCity from "../../components/common/main/myCity";
+import BaseGoButton from "../../components/base/BaseGoButton";
 const { $device } = useNuxtApp();
 
 const router = useRouter();
@@ -40,6 +55,9 @@ definePageMeta({
 </script>
 
 <style lang="scss" scoped>
+.main-page {
+  padding-bottom: 2rem;
+}
 .main-page-mobile-header-title {
   display: flex;
   align-items: center;
@@ -49,6 +67,10 @@ definePageMeta({
 }
 .main-page-mini-logo {
   height: 50px;
+}
+.main-page-city {
+  max-width: 500px;
+
 }
 .main-page--mobile {
 
@@ -129,7 +151,7 @@ definePageMeta({
   }
 
   .main-page-block {
-
+    margin: 16px 0;
   }
 
   .main-page-steps {

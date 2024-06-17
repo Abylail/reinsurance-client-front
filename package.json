@@ -23,6 +23,7 @@
     "@nuxt/image": "^1.0.0",
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
+    "geoip-lite": "^1.4.10",
     "maska": "^2.1.10",
     "mixpanel-browser": "^2.52.0",
     "nuxt-delay-hydration": "^1.2.3",

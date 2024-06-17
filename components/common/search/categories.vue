@@ -3,6 +3,7 @@
 
     <div class="categories__list">
       <nuxt-link
+        v-if="props.showAllCategory"
         class="categories__item"
         :class="{'categories__item--selected': isSelected()}"
         to="/announcements"
@@ -32,6 +33,10 @@ import BaseIcon from "../../base/BaseIcon";
 const props = defineProps({
   activeCode: String,
   showSelected: Boolean,
+  showAllCategory: {
+    type: Boolean,
+    default: true
+  }
 })
 
 const categoryStore = useCategoriesStore();
@@ -49,7 +54,7 @@ const isSelected = (code = "") => props.showSelected && code === props.activeCod
     align-self: center;
     gap: 16px;
     overflow: auto;
-    padding: 16px 0;
+    padding: .5rem 0;
   }
 
   &__item {

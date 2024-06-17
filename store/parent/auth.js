@@ -10,6 +10,9 @@ const state = () => ({
 
     // Координаты пользователя
     clientCoords: null,
+
+    // Город пользователя
+    city: null,
 })
 
 const getters = {
@@ -27,6 +30,9 @@ const getters = {
 
     // Координаты пользователя
     getClientCoords: state => state.clientCoords,
+
+    // Город
+    getCity: state => state.city || "almaty",
 }
 
 const actions = {
@@ -107,6 +113,11 @@ const actions = {
         this.clientData = {...this.clientData, cart: ids};
         nextTick(() => api.put("/parent/setCart", {cart: ids}));
     },
+
+    setCity(city) {
+        cookie.city.set(city);
+        this.city = city?.toLowerCase() || "almaty";
+    }
 }
 
 export const useAuthStore = defineStore("auth", {

@@ -80,6 +80,7 @@ import {useMyAnnouncementsStore} from "../../store/parent/myAnnouncements";
 import {useRouter} from "nuxt/app";
 import ThanksCreateModal from "../../components/common/create/thanksCreateModal";
 import CategoriesSelect from "../../components/common/create/categoriesSelect";
+const { $a } = useNuxtApp();
 
 definePageMeta({
   middleware: "auth"
@@ -104,6 +105,7 @@ const submitHandle = async () => {
   isLoading.value = true;
   const isSuccess = await myAnnouncements.create(form.value);
   if (isSuccess) {
+    $a.create();
     isFinished.value = true;
     nextTick(() => clear());
   }
