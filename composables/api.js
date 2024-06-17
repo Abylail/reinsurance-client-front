@@ -6,7 +6,8 @@ const apiErrorCatcher = error => {
 }
 
 // Создание ссылки
-const createPath = (path, config) => config.public.BACKEND_URL + path;
+const createPath = (path, config) => ((process.env.NODE_ENV === "production" && process.server) ? "/api-client" : config.public.BACKEND_URL) + path;
+
 
 // Создание опций
 const createOptions = (options = {}, method = "get") => {
