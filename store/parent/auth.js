@@ -123,7 +123,7 @@ const actions = {
         this.city = city?.toLowerCase() || "almaty";
     },
 
-    async initCity(ip) {
+    async initCity() {
         if (this.city) return;
         const cookieService = useCookieService();
         const cookieCity = cookieService.city.get();
@@ -132,7 +132,7 @@ const actions = {
             return;
         }
 
-        await $fetch(`http://ip-api.com/json/${ip}`)
+        await $fetch(`http://ip-api.com/json`)
             .then(response => {
                 if (response.status === "success") {
                     this.city = response.city?.toLowerCase() || "almaty";
@@ -141,8 +141,6 @@ const actions = {
             .catch((e) => {
                 console.log(e);
             })
-
-        // cookieService.city.set(this.city);
     }
 }
 
