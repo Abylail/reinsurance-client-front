@@ -133,7 +133,7 @@ const actions = {
         }
 
         if (process.server) return;
-        await $fetch(`http://ip-api.com/json`)
+        await $fetch(`https://kidrent.kz/api/v1/client/geo`)
             .then(response => {
                 if (response.status === "success") {
                     this.city = response.city?.toLowerCase() || "almaty";
