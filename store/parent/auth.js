@@ -117,6 +117,24 @@ const actions = {
     setCity(city) {
         cookie.city.set(city);
         this.city = city?.toLowerCase() || "almaty";
+    },
+
+    initCity(ip) {
+        if (this.city) return;
+        const cookieCity = cookie.city.get();
+        if (cookieCity) {
+            this.city = cookieCity;
+            return;
+        }
+
+        $fetch(`http://ip-api.com/json/${ip}`)
+            .then(response => {
+                if (response.status === "success") {
+                    const city = response.city.toLowerCase();
+                    this.city = city;
+                }
+            })
+            .catch(() => {})
     }
 }
 
