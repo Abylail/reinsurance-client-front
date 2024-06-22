@@ -1,5 +1,4 @@
 import api from "~/composables/api";
-import cookie from "~/composables/cookie";
 import {defineStore} from "pinia";
 import {toRaw} from "vue";
 

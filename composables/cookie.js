@@ -13,10 +13,10 @@ const createCookie = name => {
     }
 }
 
-const cookieService = {
+export const useCookieService = () => ({
     userToken: createCookie("userToken"),
     lang: createCookie("lang"),
     city: createCookie("city"),
-}
+})
 
-export default cookieService
+// export default useCookieService();

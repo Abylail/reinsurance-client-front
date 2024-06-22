@@ -1,5 +1,5 @@
 import api from "~/composables/api";
-import cookie from "~/composables/cookie";
+import {useCookieService} from "~/composables/cookie";
 import {defineStore} from "pinia";
 import {phoneValidation} from "~/helpers/phone";
 import {nextTick} from "vue";
@@ -58,6 +58,7 @@ const actions = {
         if (!phoneValidation(phone) || smsCode?.length !== 4) return false;
         const { err, body } = await api.post("/parent/smsAuth", {phone, sms_code: smsCode})
         if (err) return false;
+        const cookie = useCookieService();
         this.clientData = body;
         await cookie.userToken.set(body.token);
         return true;
@@ -65,6 +66,7 @@ const actions = {
 
     // Авторизация по токену
     async loginToken() {
+        const cookie = useCookieService();
         if (!cookie.userToken.get()) return
         const { err, body } = await api("/parent/tokenAuth")
         if (!err) this.clientData = body;
@@ -73,6 +75,7 @@ const actions = {
 
     // Выход
     logout() {
+        const cookie = useCookieService();
         if (process.client) cookie.userToken.remove();
     },
 
@@ -114,27 +117,32 @@ const actions = {
         nextTick(() => api.put("/parent/setCart", {cart: ids}));
     },
 
-    setCity(city) {
+    setCity(city = this.city) {
+        const cookie = useCookieService();
         cookie.city.set(city);
         this.city = city?.toLowerCase() || "almaty";
     },
 
-    initCity(ip) {
+    async initCity(ip) {
         if (this.city) return;
-        const cookieCity = cookie.city.get();
+        const cookieService = useCookieService();
+        const cookieCity = cookieService.city.get();
         if (cookieCity) {
             this.city = cookieCity;
             return;
         }
 
-        $fetch(`http://ip-api.com/json/${ip}`)
+        await $fetch(`http://ip-api.com/json/${ip}`)
             .then(response => {
                 if (response.status === "success") {
-                    const city = response.city.toLowerCase();
-                    this.city = city;
+                    this.city = response.city?.toLowerCase() || "almaty";
                 }
             })
-            .catch(() => {})
+            .catch((e) => {
+                console.log(e);
+            })
+
+        // cookieService.city.set(this.city);
     }
 }
 

@@ -2,11 +2,12 @@ import {defineNuxtPlugin} from "#app";
 import { createI18n } from "vue-i18n";
 import ru from "@/assets/localization/ru.json"
 import kz from "@/assets/localization/kz.json"
-import cookie from "~/composables/cookie";
+import {useCookieService} from "~/composables/cookie";
 import {watch} from "vue";
 
 
 export default defineNuxtPlugin(nuxtApp => {
+    const cookie = useCookieService();
     const i18n = createI18n({
         locale: cookie.lang.get() || "ru",
         fallbackLocale: "ru",

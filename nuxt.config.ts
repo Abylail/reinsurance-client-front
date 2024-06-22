@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     ['nuxt-lazy-load', {
       loadingClass: "skeleton-loading"
-    }]
+    }],
   ],
 
   image: {

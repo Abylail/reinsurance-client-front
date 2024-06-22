@@ -26,7 +26,7 @@
 
 <script setup>
 import {useAuthStore} from "../../../store/parent/auth";
-import {computed} from "vue";
+import {computed, onMounted} from "vue";
 import {cityName} from "../../../config/city";
 import BaseIcon from "../../base/BaseIcon";
 import BaseBackdrop from "../../base/BaseBackdrop";
@@ -42,6 +42,10 @@ const selectCity = (cityCode) => {
   authStore.setCity(cityCode);
   active.value = false;
 }
+
+onMounted(() => {
+  authStore.setCity();
+})
 </script>
 
 <style lang="scss" scoped>

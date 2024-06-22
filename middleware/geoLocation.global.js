@@ -15,10 +15,9 @@ export default defineNuxtRouteMiddleware(async () => {
             || req.socket.remoteAddress
             || (req.connection.socket ? req.connection.socket.remoteAddress : null);
     }
+    ip = "37.151.221.0"
 
-    if (!ip || ip === '::1') {
-            ip = '127.0.0.1';
-        }
+    if (!ip || ip === '::1') ip = '127.0.0.1';
 
-    authStore.initCity(ip);
+    await authStore.initCity(ip);
 });
