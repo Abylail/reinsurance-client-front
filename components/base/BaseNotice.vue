@@ -1,7 +1,7 @@
 <template>
   <div class="base-notice">
     <base-icon class="base-notice__icon" name="mdi-information-outline" size="30"/>
-    <div class="base-notice__text">{{ props.text }}</div>
+    <div class="base-notice__text" v-html="props.text"/>
   </div>
 </template>
 

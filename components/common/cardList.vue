@@ -9,12 +9,12 @@
     </div>
 
     <!-- Лоудер -->
-    <div class="card-list__content container--white" v-if="loading">
+    <div class="card-list__content container" v-if="loading">
       <div class="card-list__card-loading skeleton-loading" v-for="(_, index) in loadingCount" :key="index"/>
     </div>
 
     <!-- Карточки -->
-    <div class="card-list__content container--white" v-else>
+    <div class="card-list__content container" v-else>
       <slot/>
     </div>
   </div>
@@ -42,7 +42,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .card-list {
   padding-top: 12px;
-  background-color: white;
+  //background-color: white;
 
   &__head {
     display: flex;

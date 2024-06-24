@@ -7,12 +7,13 @@
   </mobile-header>
   <div :class="['main-page', {'main-page--mobile': !$device.isDesktop}, {'main-page--desktop': $device.isDesktop}]">
 
-    <div class="main-page-top">
-      <banner/>
-    </div>
+<!--    <div class="main-page-top">-->
+<!--      <banner/>-->
+<!--    </div>-->
 
-    <div class="container main-page-block">
-      <categories :show-all-category="false"/>
+    <div class="main-page-block">
+<!--      <categories :show-all-category="false"/>-->
+      <pretty-categories/>
     </div>
 
     <my-city class="container main-page-city main-page-block"/>
@@ -22,7 +23,7 @@
 
     <div class="container">
       <base-go-button
-        title="В каталог"
+        title="Смотреть все товары"
         icon="mdi-view-grid-outline"
         type="bright"
         @click="router.push('/announcements')"
@@ -40,6 +41,7 @@ import {useFeedStore} from "../../store/main/feed";
 import Feed from "../../components/common/main/feed";
 import MyCity from "../../components/common/main/myCity";
 import BaseGoButton from "../../components/base/BaseGoButton";
+import PrettyCategories from "../../components/common/main/prettyCategories";
 const { $device } = useNuxtApp();
 
 const router = useRouter();

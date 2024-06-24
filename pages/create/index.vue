@@ -5,7 +5,7 @@
 
     <div class="create__form">
 
-      <div class="create__subtitle">Добавьте фото товара</div>
+      <div class="create__subtitle">Добавьте <strong>реальные</strong> фото товара<br/>Не скриншоты и не картинки</div>
       <base-photo-input
           v-model="form.photoBuffers"
           multiple
@@ -46,7 +46,7 @@
           v-model="form.use_experience"
       />
 
-      <div class="create__subtitle">Напишите минимальную цену<br>за которую не жалко :)<br/><br/>Оплату вы получите на личную карту</div>
+      <div class="create__subtitle">Напишите <strong>минимальную</strong> цену<br>за которую не жалко :)<br/><br/>Оплату вы получите на личную карту</div>
 
       <base-input
           title="Ваша цена"

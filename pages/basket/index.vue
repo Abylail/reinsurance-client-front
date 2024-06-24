@@ -10,7 +10,7 @@
         <base-toggle
             class="container"
             :title="`Дезинфицировать (+${priceDisinfected}тг)`"
-            hint="Обработка горячим паром и хлогикседином"
+            hint="Обработка горячим паром и УФ лампой"
             v-model="needDisinfected[item.id]"
         />
       </div>

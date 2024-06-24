@@ -50,12 +50,12 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .my-city {
-  background: $color--green-light;
-  padding: 1rem;
+  background: white;
+  padding: 0.5rem 1rem;
   width: calc(100% - 4rem - 2px);
   border-radius: 10px;
-  color: $color--green;
-  border: 1px solid currentColor;
+  color: #595959;
+  border: 1px solid transparent;
   margin: 0 auto 1rem;
 
   &__content {
@@ -96,6 +96,8 @@ onMounted(() => {
     border-bottom: 1px solid $color--green;
     width: 100%;
     font-size: $fs--default;
+    color: #595959;
+    font-weight: bold;
   }
 
   &__list-item-index {

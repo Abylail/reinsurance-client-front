@@ -30,6 +30,10 @@
         <p class="ann-details__description"><base-cut-text :text="info.use_experience"/></p>
       </div>
     </div>
+
+    <div class="ann-details__main-content container">
+      <base-notice text="<strong>Безопасная сделка</strong><br/>Мы вернем вам деньги если качество товара не соотвествует"/>
+    </div>
   </div>
 </template>
 
@@ -44,6 +48,7 @@ import BaseIcon from "../../../components/base/BaseIcon";
 import {useAuthStore} from "../../../store/parent/auth";
 import BaseCutText from "../../../components/base/BaseCutText";
 import BaseRating from "../../../components/base/BaseRating";
+import BaseNotice from "../../../components/base/BaseNotice";
 const nuxtApp = useNuxtApp();
 
 const route = useRoute();
