@@ -5,7 +5,14 @@
     <div class="ann-details__main-content container--white">
       <h1 class="ann-details__title">{{ info.title }}</h1>
       <p class="ann-details__description"><base-cut-text :text="info.description"/></p>
-      <h2 class="ann-details__price">{{ info.price?.toLocaleString() }} ₸</h2>
+      <h2 class="ann-details__price">
+        <span>{{ info.price?.toLocaleString() }} ₸</span>
+        <a
+            class="ann-details__self-price"
+            :href="`https://wa.me/77753862246?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%0A%0A%0A%D0%AF%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%B0%D0%B3%D0%B0%D1%8E%20%D0%B7%D0%B0%20%D1%82%D0%BE%D0%B2%D0%B0%D1%80%20%D0%BF%D0%BE%20%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B5%20https://kidrent.kz/${announcementPath},%20%D1%81%D0%B2%D0%BE%D1%8E%20%D1%86%D0%B5%D0%BD%D1%83%20...(%D0%BD%D0%B0%D0%BF%D0%B8%D1%88%D0%B8%D1%82%D0%B5%20%D0%B2%D0%B0%D1%88%D1%83%20%D1%86%D0%B5%D0%BD%D1%83)`"
+            @click.stop
+        >Предложите цену</a>
+      </h2>
       <div class="ann-details__actions">
         <base-button v-if="!isInCart" type="orange" full-width @click="toggleCart()">Добавить в корзину +</base-button>
         <base-button v-else type="outline" full-width @click="router.push('/basket')">В корзину</base-button>
@@ -85,6 +92,9 @@ const usageAge = computed(() => {
       : nuxtApp.$t("until_age_month", {age: info.value.max_age})
   return `${minAge} ${maxAge}`
 });
+
+const announcementPath = computed(() => `/announcements/announcement-${info.value.id}`);
+
 </script>
 
 <style lang="scss" scoped>
@@ -107,8 +117,12 @@ const usageAge = computed(() => {
   }
 
   &__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: $fs--big-title;
     font-weight: 500;
+    padding: .25rem;
   }
 
   &__actions {
@@ -126,6 +140,13 @@ const usageAge = computed(() => {
 
   &__info-block:not(:last-child) {
     margin-bottom: .5rem;
+  }
+
+  &__self-price {
+    line-height: $fs--title;
+    color: $color--blue;
+    font-size: $fs--mini;
+    font-weight: 400;
   }
 
 }
