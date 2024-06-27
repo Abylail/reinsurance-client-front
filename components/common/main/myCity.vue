@@ -52,10 +52,11 @@ onMounted(() => {
 .my-city {
   background: white;
   padding: 0.5rem 1rem;
-  width: calc(100% - 4rem - 2px);
+  width: calc(100% - 2rem - 2px);
+  max-width: 500px;
   border-radius: 10px;
   color: #595959;
-  border: 1px solid transparent;
+  border: 1px solid $color--gray;
   margin: 0 auto 1rem;
 
   &__content {

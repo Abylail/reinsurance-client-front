@@ -23,6 +23,8 @@
           v-model="form.description"
       />
 
+      <my-city/>
+
       <div class="create__subtitle">Выберите категории товара</div>
             <categories-select v-model="form.categories" :options="categoryStore.getList"/>
 
@@ -80,6 +82,7 @@ import {useMyAnnouncementsStore} from "../../store/parent/myAnnouncements";
 import {useRouter} from "nuxt/app";
 import ThanksCreateModal from "../../components/common/create/thanksCreateModal";
 import CategoriesSelect from "../../components/common/create/categoriesSelect";
+import MyCity from "../../components/common/main/myCity";
 const { $a } = useNuxtApp();
 
 definePageMeta({

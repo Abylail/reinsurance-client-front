@@ -27,7 +27,7 @@ const router = useRouter();
 const categoryStore = useCategoriesStore();
 
 const activeCategory = computed(() => route.params.category ? categoryStore.getList?.find(c => c.code === route.params.category) : null)
-const titleCategory = computed(() => activeCategory.value?.name_ru || "Товар")
+const titleCategory = computed(() => activeCategory.value?.name_ru || "Все товары")
 </script>
 
 <style scoped>

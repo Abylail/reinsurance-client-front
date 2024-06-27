@@ -1,5 +1,5 @@
 <template>
-  <card-list title="Категории" to="/announcements">
+  <card-list>
       <nuxt-link
           class="pretty-categories__item"
           v-for="(category, index) in categories" :key="index"

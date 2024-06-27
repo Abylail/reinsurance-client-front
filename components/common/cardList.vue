@@ -3,7 +3,7 @@
     <div class="card-list__top-head container" v-if="subTitle">
       <div class="card-list__subtitle">{{ subTitle }}</div>
     </div>
-    <div class="card-list__head container">
+    <div class="card-list__head container" v-if="props.title || props.to">
       <h2 class="card-list__title title">{{ props.title }}</h2>
       <nuxt-link class="card-list__go-all" v-if="props.to" :to="props.to">Смотреть все</nuxt-link>
     </div>

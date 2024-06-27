@@ -1,5 +1,6 @@
 import api from "~/composables/api";
 import {defineStore} from "pinia";
+import {useAuthStore} from "~/store/parent/auth";
 
 const state = () => ({
     list: null,
@@ -18,7 +19,8 @@ const actions = {
 
     // Добавить ребенка
     async create(info) {
-        const { err, body } = await api.post("/announcement/create", info);
+        const authStore = useAuthStore();
+        const { err, body } = await api.post("/announcement/create", {...info, city: authStore.getCity});
         return !err;
     },
 }

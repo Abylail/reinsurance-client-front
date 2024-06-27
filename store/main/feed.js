@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import api from "~/composables/api";
+import {useAuthStore} from "~/store/parent/auth";
 
 const pageCount = 10;
 
@@ -24,7 +25,8 @@ const actions = {
     // Изначальный запрос
     async fetchListInit() {
         if (this.list) return;
-        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: 0, status: "active"}});
+        const authStore = useAuthStore();
+        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: 0, status: "active", city: authStore.getCity}});
         this.list = body;
     },
 
@@ -32,7 +34,8 @@ const actions = {
     async fetchListMore(page) {
         if (!this.haveMore || page <= this.page) return;
         this.page = page;
-        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: (page * pageCount)+1, status: "active"}});
+        const authStore = useAuthStore();
+        const { body, err } = await api.get("/announcement/list", {params: {limit: pageCount, offset: (page * pageCount)+1, status: "active", city: authStore.getCity}});
         this.list = [...this.list, ...body];
         if (body.length < pageCount) this.haveMore = false;
     },

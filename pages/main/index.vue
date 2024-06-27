@@ -11,24 +11,26 @@
 <!--      <banner/>-->
 <!--    </div>-->
 
-    <div class="main-page-block">
+    <div>
 <!--      <categories :show-all-category="false"/>-->
       <pretty-categories/>
     </div>
 
-    <my-city class="container main-page-city main-page-block"/>
+    <div class="container main-page-block">
+      <my-city/>
+    </div>
 
     <div class="main-page-title container">Новейшие товары</div>
-    <feed :pagination="false"/>
+    <feed/>
 
-    <div class="container">
-      <base-go-button
-        title="Смотреть все товары"
-        icon="mdi-view-grid-outline"
-        type="bright"
-        @click="router.push('/announcements')"
-      />
-    </div>
+<!--    <div class="container">-->
+<!--      <base-go-button-->
+<!--        title="Смотреть все товары"-->
+<!--        icon="mdi-view-grid-outline"-->
+<!--        type="bright"-->
+<!--        @click="router.push('/announcements')"-->
+<!--      />-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -69,10 +71,6 @@ definePageMeta({
 }
 .main-page-mini-logo {
   height: 50px;
-}
-.main-page-city {
-  max-width: 500px;
-
 }
 .main-page--mobile {
 
