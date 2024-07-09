@@ -17,7 +17,7 @@
     </div>
 
     <div class="container main-page-block">
-      <my-city/>
+      <my-city reload/>
     </div>
 
     <div class="main-page-title container">Новейшие товары</div>

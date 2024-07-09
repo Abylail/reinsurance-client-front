@@ -26,10 +26,17 @@
 
 <script setup>
 import {useAuthStore} from "../../../store/parent/auth";
-import {computed, onMounted} from "vue";
+import {computed, nextTick, onMounted} from "vue";
 import {cityName} from "../../../config/city";
 import BaseIcon from "../../base/BaseIcon";
 import BaseBackdrop from "../../base/BaseBackdrop";
+
+const props = defineProps({
+  reload: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const authStore = useAuthStore();
 const cityTitle = computed(() => cityName[authStore.getCity] || authStore.getCity);
@@ -41,6 +48,7 @@ const cities = computed(() => Object.keys(cityName).map(code => ({code, name: ci
 const selectCity = (cityCode) => {
   authStore.setCity(cityCode);
   active.value = false;
+  if (props.reload) nextTick(() => window.location.reload())
 }
 
 onMounted(() => {
