@@ -16,11 +16,14 @@
       <pretty-categories/>
     </div>
 
-    <div class="container main-page-block">
-      <my-city reload/>
+<!--    <div class="container main-page-block">-->
+<!--      <my-city reload/>-->
+<!--    </div>-->
+    <div class="container">
+      <categories/>
     </div>
 
-    <div class="main-page-title container">Новейшие товары</div>
+    <div class="main-page-title container">Последние товары</div>
     <feed/>
 
 <!--    <div class="container">-->
@@ -93,6 +96,7 @@ definePageMeta({
   .main-page-title {
     font-size: $fs--title;
     font-weight: normal;
+    margin-top: 1rem;
   }
 
   .main-page-block {

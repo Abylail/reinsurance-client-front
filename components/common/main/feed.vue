@@ -1,6 +1,6 @@
 <template>
   <div class="feed container">
-    <base-scroll-pagination @paginate="fetchMore($event)">
+    <base-scroll-pagination :loading="isLoading" @paginate="fetchMore($event)">
       <div class="feed__list">
         <announcement-card
             class="feed__item"

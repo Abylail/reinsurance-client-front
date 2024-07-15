@@ -57,11 +57,12 @@ const isThreeCols = computed(() => (slots.left || props.goBack) && showRight.val
   align-items: center;
   grid-template-columns: 1fr;
   height: $header-height;
-  font-weight: bold;
-  background-color: white;
+  font-weight: 500;
+  background-color: $color--purple-dark;
   padding: 0 $side-space-mobile;
   grid-column-gap: 8px;
   border-bottom: 1px solid $color--gray-light;
+  color: white;
 
   &--two-cols--right {
     display: grid;
@@ -83,7 +84,7 @@ const isThreeCols = computed(() => (slots.left || props.goBack) && showRight.val
 
   &__go-back {
     width: 36px;
-    color: $color--blue;
+    color: white;
   }
 
   &__title {
@@ -99,7 +100,7 @@ const isThreeCols = computed(() => (slots.left || props.goBack) && showRight.val
   &__right {
     display: flex;
     justify-content: flex-end;
-    color: $color--black;
+    color: white;
   }
 }
 </style>

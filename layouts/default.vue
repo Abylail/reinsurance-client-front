@@ -61,7 +61,7 @@ useSeoMeta({
 
 .main-mobile {
   padding-bottom: 100px;
-  background-color: $color--gray-light;
+  background-color: #f8f8f8;
   min-height: calc(#{100vh} - 100px);
 }
 

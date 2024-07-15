@@ -8,11 +8,18 @@
 import {onMounted, onUnmounted, ref} from "vue";
 
 const emits = defineEmits(["paginate"])
+const props = defineProps({
+  loading: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const page = ref(1);
 
 const scrollComponent = ref(null);
 const handleScroll = (e) => setTimeout(() => {
+  if (props.loading) return;
   let element = scrollComponent.value
   if (element.getBoundingClientRect().bottom < window.innerHeight) {
     emits("paginate", page.value++);
