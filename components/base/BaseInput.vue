@@ -1,5 +1,5 @@
 <template>
-  <div :class="['base-input', `base-input--${type}`]">
+  <div :class="['base-input', `base-input--${type}`, {'disabled': props.disabled}]">
 
     <div class="base-input__hit-box" @click.stop="hitBoxHandle()">
 
@@ -59,7 +59,15 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
+  password: {
+    type: Boolean,
+    default: false
+  },
   number: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
     type: Boolean,
     default: false
   },
@@ -116,6 +124,7 @@ const inputHandle = value => {
 
 const inputType = computed(() => {
   if (props.number) return "number";
+  if (props.password) return "password";
   return "text";
 })
 

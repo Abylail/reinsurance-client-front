@@ -47,6 +47,8 @@
   "1_month": "1 ай",
   "1_week": "1 апта",
   "mobile_phone": "Ұялы телефон",
+  "password": "Пароль",
+  "repassword": "Повторите пароль",
   "send_code": "Кодты жіберу",
   "enter_send_code": "Алынған смс кодты енгізіңіз",
   "wrong_code": "Қате код",

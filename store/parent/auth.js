@@ -44,7 +44,24 @@ const actions = {
      * */
     async sendOtp(phone) {
         if (!phoneValidation(phone)) return false;
-        const { err } = await api.post("/parent/sendSms", {phone})
+        const { err, response } = await api.post("/parent/sendSms", {phone})
+        if (response.smsCode) alert(response.smsCode);
+        return !err;
+    },
+
+    /**
+     * Авторизация по паролю
+     * @param {string} phone
+     * @param {string} password
+     * @return {Promise<boolean>} успешно ли отправлен
+     * */
+    async loginPassword(phone, password) {
+        if (!phoneValidation(phone)) return false;
+        const { err, body } = await api.post("/parent/login", {phone, password});
+        if (err) return false;
+        const cookie = useCookieService();
+        this.clientData = body;
+        await cookie.userToken.set(body.token);
         return !err;
     },
 
@@ -77,6 +94,13 @@ const actions = {
     logout() {
         const cookie = useCookieService();
         if (process.client) cookie.userToken.remove();
+    },
+
+    // Задать пароль
+    async setPassword(password) {
+        if (!password) return false;
+        const { err, body } = await api.post("/parent/setpass", {password});
+        return !err;
     },
 
     // Обновить данные родителя

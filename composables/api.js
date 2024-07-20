@@ -26,7 +26,7 @@ const get = async (path, options = {}) => new Promise(resolve => {
     const apiOptions = createOptions(options);
     $fetch(apiPath, apiOptions)
         .then(response => {
-            resolve({body: response?.body});
+            resolve({body: response?.body, response});
         })
         .catch(response => {
             resolve({err: response?.data?.message});
@@ -40,7 +40,7 @@ const post = async (path, body = {}, options = {}) => new Promise(resolve => {
     const apiOptions = createOptions(options, "post");
     $fetch(apiPath, {...apiOptions, body})
         .then(response => {
-            resolve({body: response?.body});
+            resolve({body: response?.body, response});
         })
         .catch(response => {
             const error = response?.data?.message || "Ошибка";
@@ -56,7 +56,7 @@ const put = async (path, body = {}, options = {}) => new Promise(resolve => {
     const apiOptions = createOptions(options, "put");
     $fetch(apiPath, {...apiOptions, body})
         .then(response => {
-            resolve({body: response?.body});
+            resolve({body: response?.body, response});
         })
         .catch(response => {
             const error = response?.data?.message;
@@ -72,7 +72,7 @@ const deleteApi = async (path, options = {}) => new Promise(resolve => {
     const apiOptions = createOptions(options, "delete");
     $fetch(apiPath, apiOptions)
         .then(response => {
-            resolve({body: response?.body});
+            resolve({body: response?.body, response});
         })
         .catch(response => {
             resolve({err: response?.data?.message});
