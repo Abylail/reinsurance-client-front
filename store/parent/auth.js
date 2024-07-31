@@ -157,7 +157,7 @@ const actions = {
         }
 
         if (process.server) return;
-        await $fetch(`https://kidrent.kz/api/v1/client/geo`)
+        await $fetch(`https://flico.kz/api/v1/client/geo`)
             .then(response => {
                 if (response.status === "success") {
                     this.city = response.city?.toLowerCase() || "almaty";

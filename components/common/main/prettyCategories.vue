@@ -78,7 +78,7 @@ const categories = [
   &__item-content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     //background-color: rgba(0,0,0, .4);
     height: 35%;
     //width: 100%;
