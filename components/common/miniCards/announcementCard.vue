@@ -11,6 +11,7 @@
     <div class="announcement-card__info">
       <div class="announcement-card__title">{{ props.info.title }}</div>
       <div class="announcement-card__price">{{ props.info.price.toLocaleString() }} ₸</div>
+      <div class="announcement-card__tag" v-if="props.info.tag">{{ props.info.tag }}</div>
 <!--      <base-rating-->
 <!--          v-if="props.info.condition"-->
 <!--          :model-value="props.info.condition"-->
@@ -113,6 +114,19 @@ const goDetails = () => {
   &__price {
     margin-top: .15rem;
     font-weight: 500;
+  }
+
+  &__tag {
+    margin-top: .15rem;
+    display: inline-block;
+    font-size: $fs--nano;
+    border-radius: 1rem;
+    border: 1px solid $color--red;
+    font-weight: 500;
+    color: $color--red;
+    padding: .2rem .5rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__self-price {
