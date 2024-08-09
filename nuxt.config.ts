@@ -14,10 +14,10 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover",
-      "apple-touch-icon": "/logo-reverse.svg",
+      "apple-touch-icon": "/logo.svg",
       lang: "ru",
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/logo-reverse.svg' }
+        { rel: 'icon', type: 'image/x-icon', href: '/logo.svg' }
       ],
     },
   },

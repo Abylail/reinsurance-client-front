@@ -44,7 +44,7 @@ useHead({
     flex-grow: 1;
     width: 100%;
     margin-bottom: 40px;
-    background-image: url('~/assets/images/logo-white-text.svg');
+    background-image: url('/logo.svg');
     background-position: center;
     background-repeat: no-repeat;
     max-height: 250px;

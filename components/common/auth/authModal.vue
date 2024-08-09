@@ -7,7 +7,7 @@
 
     <!-- ВХОД ПАРОЛЮ -->
     <div class="container--thin" v-if="view === views.login" @keyup.enter="loginPassword()">
-      <div class="auth__title">Вход в kidrent</div>
+      <div class="auth__title">Вход в аккаунт</div>
 
       <div class="auth__form">
         <base-input
@@ -32,7 +32,7 @@
       <base-button class="auth__action" type="default-light" full-width @click="loginPassword()">Войти</base-button>
       <base-button class="auth__action" type="naked-blue" full-width @click="openView(views.registration)">У меня нет аккаунта</base-button>
 
-      <nuxt-img class="auth__logo" src="/logo-reverse.svg" alt="logo"/>
+      <nuxt-img class="auth__logo" src="/logo.svg" alt="logo"/>
     </div>
 
     <!-- ВХОД НЕ ПАРОЛЬ -->
@@ -67,7 +67,7 @@
           @click="sendSmsHandle()"
       >{{ $t('send_code') }}</base-button>
 
-      <nuxt-img class="auth__logo" src="/logo-reverse.svg" alt="logo"/>
+      <nuxt-img class="auth__logo" src="/logo.svg" alt="logo"/>
     </div>
 
     <!-- Новый пароль -->
@@ -93,7 +93,7 @@
       </div>
 
       <base-button class="auth__action" type="default-light" :disabled="!canSetPass" full-width @click="setPassword()">Сохранить пароль</base-button>
-      <nuxt-img class="auth__logo" src="/logo-reverse.svg" alt="logo"/>
+      <nuxt-img class="auth__logo" src="/logo.svg" alt="logo"/>
     </div>
 
     <!-- Ввод данных пользователя -->
@@ -106,7 +106,7 @@
       </div>
 
       <base-button class="auth__action" type="default-light" :disabled="!canSetUserData" full-width @click="setUserData()">Сохранить</base-button>
-      <nuxt-img class="auth__logo" src="/logo-reverse.svg" alt="logo"/>
+      <nuxt-img class="auth__logo" src="/logo.svg" alt="logo"/>
     </div>
 <!--    <div class="auth__content" v-if="step === 1">-->
 <!--      <base-input-->

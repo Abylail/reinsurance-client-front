@@ -58,7 +58,7 @@ const isThreeCols = computed(() => (slots.left || props.goBack) && showRight.val
   grid-template-columns: 1fr;
   height: $header-height;
   font-weight: 500;
-  background-color: $color--purple-dark;
+  background-color: $color--blue-dark;
   padding: 0 $side-space-mobile;
   grid-column-gap: 8px;
   border-bottom: 1px solid $color--gray-light;

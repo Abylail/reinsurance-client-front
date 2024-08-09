@@ -1,8 +1,7 @@
 <template>
   <mobile-header :lang-switch="false">
     <div class="main-page-mobile-header-title">
-      <nuxt-img class="main-page-mini-logo" src="/logo.svg" alt="logo"/>
-      <span>Kidrent</span>
+      <span>Flico.</span>
     </div>
   </mobile-header>
   <div :class="['main-page', {'main-page--mobile': !$device.isDesktop}, {'main-page--desktop': $device.isDesktop}]">

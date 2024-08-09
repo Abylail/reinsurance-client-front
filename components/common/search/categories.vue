@@ -63,7 +63,7 @@ const isSelected = (code = "") => props.showSelected && code === props.activeCod
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: $color--purple-dark;
+    color: $color--blue-dark;
     aspect-ratio: 5/4;
     padding: 4px;
     gap: 8px;
