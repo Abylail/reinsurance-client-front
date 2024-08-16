@@ -12,7 +12,7 @@
           class="account__go"
           title="Мои избранные"
           icon="mdi-heart"
-          type="bright"
+          type="outlined"
           @click="router.push('/account/favorite')"
       />
 
@@ -20,11 +20,19 @@
           class="account__go"
           title="Мои покупки"
           icon="mdi-cart-variant"
-          type="bright"
+          type="outlined"
           @click="router.push('/account/purchases')"
       />
 
       <div class="account__title">Мои объявления</div>
+      <base-go-button
+          class="account__share-list"
+          title="Поделитесь объявлениями"
+          sub-title="Вы можете отправить ссылку на ваши объявления"
+          icon="mdi-share-circle"
+          type="bright"
+          @click="shareHandle()"
+      />
       <my-announcements/>
     </div>
 
@@ -60,6 +68,16 @@ useSeoMeta({
 definePageMeta({
   middleware: "auth"
 })
+
+// Поделиться объявлениями
+const shareHandle = () => {
+  const shareData = {
+    url: `https://flico.kz//announcements/seller-${authStore.getClientData.id}`,
+    title: `Мои объявления на Flico.kz`,
+  };
+
+  if (window.navigator.canShare(shareData)) navigator.share(shareData);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -98,6 +116,10 @@ definePageMeta({
 
   &__go {
     margin-top: 1rem;
+  }
+
+  &__share-list {
+    margin: 1rem 0;
   }
 
 }

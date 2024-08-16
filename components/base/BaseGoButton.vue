@@ -19,7 +19,7 @@ const props = defineProps({
   type: {
     type: String,
     default: "default",
-    validator: t => ["default", "bright"].includes(t)
+    validator: t => ["default", "bright", "outlined"].includes(t)
   }
 })
 </script>
@@ -49,7 +49,7 @@ const props = defineProps({
   }
 
   &__title {
-    font-weight: bold;
+    font-weight: 600;
   }
 
   &__subtitle {
@@ -68,6 +68,13 @@ const props = defineProps({
     color: white;
     .go-button__icon {color: white;}
     .go-button__subtitle {color: $color--gray-light;}
+  }
+  &--outlined {
+    background: white;
+    color: $color--black;
+    border: 1px solid $color--blue;
+    .go-button__icon {color: $color--blue;}
+    .go-button__subtitle {color: $color--gray-dark;}
   }
 }
 </style>

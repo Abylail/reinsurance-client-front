@@ -7,11 +7,10 @@
       <p class="ann-details__description"><base-cut-text :text="info.description"/></p>
       <h2 class="ann-details__price">
         <span>{{ info.price?.toLocaleString() }} ₸</span>
-        <a
-            class="ann-details__self-price"
-            :href="`https://wa.me/77753862246?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%0A%0A%0A%D0%AF%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%B0%D0%B3%D0%B0%D1%8E%20%D0%B7%D0%B0%20%D1%82%D0%BE%D0%B2%D0%B0%D1%80%20%D0%BF%D0%BE%20%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B5%20https://kidrent.kz${announcementPath},%20%D1%81%D0%B2%D0%BE%D1%8E%20%D1%86%D0%B5%D0%BD%D1%83%20...(%D0%BD%D0%B0%D0%BF%D0%B8%D1%88%D0%B8%D1%82%D0%B5%20%D0%B2%D0%B0%D1%88%D1%83%20%D1%86%D0%B5%D0%BD%D1%83)`"
-            @click.stop
-        >Предложите цену</a>
+        <button class="ann-details__share" @click="shareHandle()">
+          Поделиться
+          <base-icon name="mdi-export-variant"/>
+        </button>
       </h2>
       <div class="ann-details__actions">
         <base-button v-if="!isInCart" type="orange" full-width @click="toggleCart()">Добавить в корзину +</base-button>
@@ -21,6 +20,16 @@
           <base-icon name="mdi-heart" size="30" color="red" v-else/>
         </button>
       </div>
+    </div>
+
+    <!-- Продавец -->
+    <div class="container">
+      <base-go-button
+          title="Все объявления продавца"
+          :sub-title="`от ${announcementSellerName}`"
+          icon="mdi-format-list-text"
+          @click="goSellerAnnouncements"
+      />
     </div>
 
     <div class="ann-details__main-content container--white">
@@ -56,6 +65,7 @@ import {useAuthStore} from "../../../store/parent/auth";
 import BaseCutText from "../../../components/base/BaseCutText";
 import BaseRating from "../../../components/base/BaseRating";
 import BaseNotice from "../../../components/base/BaseNotice";
+import BaseGoButton from "../../../components/base/BaseGoButton";
 const nuxtApp = useNuxtApp();
 
 const route = useRoute();
@@ -95,6 +105,22 @@ const usageAge = computed(() => {
 
 const announcementPath = computed(() => `/announcements/announcement-${info.value.id}`);
 
+const announcementSellerName = computed(() => `${info.value.seller?.first_name} ${info.value.seller?.last_name}`);
+const goSellerAnnouncements = () => {
+  router.push(`/announcements/seller-${info.value.seller_id}`);
+}
+
+// Поделиться
+const shareHandle = () => {
+  const shareData = {
+    url: window.location.href,
+    title: `${info.value.title} - Flico.kz`,
+    text: `(${info.value.price?.toLocaleString()} ₸) ${info.value.description}`
+  };
+
+  if (window.navigator.canShare(shareData)) navigator.share(shareData);
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -105,6 +131,7 @@ const announcementPath = computed(() => `/announcements/announcement-${info.valu
     flex-direction: column;
     gap: .25rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
   &__photos {
@@ -129,7 +156,7 @@ const announcementPath = computed(() => `/announcements/announcement-${info.valu
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    margin-top: .5rem;
+    margin-top: 1rem;
   }
 
   &__hint {
@@ -142,11 +169,11 @@ const announcementPath = computed(() => `/announcements/announcement-${info.valu
     margin-bottom: .5rem;
   }
 
-  &__self-price {
-    line-height: $fs--title;
+  &__share {
+    line-height: 1;
     color: $color--blue;
-    font-size: $fs--mini;
-    font-weight: 400;
+    font-size: $fs--default;
+    font-weight: 500;
   }
 
 }
