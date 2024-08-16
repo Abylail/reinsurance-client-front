@@ -114,12 +114,18 @@ const goSellerAnnouncements = () => {
 const shareHandle = () => {
   const shareData = {
     url: window.location.href,
-    title: `${info.value.title} - Flico.kz`,
-    text: `(${info.value.price?.toLocaleString()} ₸) ${info.value.description}`
+    text: `${info.value.title} (${info.value.price?.toLocaleString()} ₸)`
   };
 
   if (window.navigator.canShare(shareData)) navigator.share(shareData);
 }
+
+useSeoMeta({
+  title: `Объявление на Flico - ${info.value.title} (${info.value.price?.toLocaleString()} ₸)`,
+  ogTitle: `Объявление на Flico - ${info.value.title} (${info.value.price?.toLocaleString()} ₸)`,
+  description: info.value.description,
+  ogDescription: info.value.description,
+})
 
 </script>
 
