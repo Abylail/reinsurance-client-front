@@ -20,6 +20,7 @@ import BaseScrollPagination from "../../base/BaseScrollPagination";
 import {ref} from "vue";
 import AnnouncementCard from "../miniCards/announcementCard";
 import BaseLoader from "../../base/BaseLoader";
+import {useAuthStore} from "../../../store/parent/auth";
 
 const props = defineProps({
   pagination: {
@@ -28,6 +29,8 @@ const props = defineProps({
   }
 })
 
+const authStore = useAuthStore();
+await authStore.initCity()
 const feed = useFeedStore();
 await feed.fetchListInit();
 
