@@ -11,6 +11,8 @@
       </div>
     </base-scroll-pagination>
 
+    <div class="announcement-list__not-found" v-if="!searchStore.getList?.length && !isLoading">У продавца нет активных объявления<br>либо они не доступны в вашем регионе</div>
+
     <base-loader v-if="isLoading" center-horizontal/>
   </div>
 </template>
@@ -49,6 +51,13 @@ const fetchMore = async () => {
   await searchStore.fetchListMore();
   isLoading.value = false;
 }
+
+useSeoMeta({
+  title: "Объявления продавца",
+  ogTitle: "Объявления продавца",
+  description: "От мамы к маме. Продавайте детские товары из которых ребенок вырос и покупайте новые.",
+  ogDescription: "От мамы к маме. Продавайте детские товары из которых ребенок вырос и покупайте новые.",
+})
 </script>
 
 <style lang="scss" scoped>

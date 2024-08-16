@@ -61,8 +61,8 @@ const selectRegistration = registration => {
 }
 
 useSeoMeta({
-  title: "Kidup - личный кабинет",
-  ogTitle: "Kidup - личный кабинет",
+  title: "Flico - личный кабинет",
+  ogTitle: "Flico - личный кабинет",
 })
 
 definePageMeta({
@@ -72,8 +72,8 @@ definePageMeta({
 // Поделиться объявлениями
 const shareHandle = () => {
   const shareData = {
-    url: `https://flico.kz//announcements/seller-${authStore.getClientData.id}`,
-    title: `Мои объявления на Flico.kz`,
+    url: `https://flico.kz/announcements/seller-${authStore.getClientData.id}`,
+    text: `Мои объявления на Flico.kz`,
   };
 
   if (window.navigator.canShare(shareData)) navigator.share(shareData);
