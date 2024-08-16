@@ -73,7 +73,7 @@ definePageMeta({
 const shareHandle = () => {
   const shareData = {
     url: `https://flico.kz/announcements/seller-${authStore.getClientData.id}`,
-    text: `Мои объявления на Flico.kz`,
+    text: `Мои объявления на Flico `,
   };
 
   if (window.navigator.canShare(shareData)) navigator.share(shareData);
