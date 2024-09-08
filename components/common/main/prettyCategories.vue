@@ -20,31 +20,31 @@ const categories = [
     title: "Коляски и аксессуары",
     subTitle: "Коляски, шезлонги, эргорюкзаки, люльки",
     code: "kolyaski_i_aksessuary",
-    imageName: "kolyaski_i_aksessuary.png"
+    imageName: "kolyaski_i_aksessuary.webp"
   },
   {
     title: "Развлечения",
     subTitle: "Игрушки, подарки и развлечения",
     code: "razvlecheniya",
-    imageName: "razvlecheniya.png"
+    imageName: "razvlecheniya.webp"
   },
   {
     title: "Мебель",
     subTitle: "Кроватки, шезлонги и стульчики",
     code: "mebel",
-    imageName: "mebel.png"
+    imageName: "mebel.webp"
   },
   {
     title: "Эко товары",
     subTitle: "Экологичные товары",
     code: "eco",
-    imageName: "eco.png"
+    imageName: "eco.webp"
   },
   {
     title: "Развитие",
     subTitle: "Товары для развития",
     code: "razvitiye",
-    imageName: "razvitiye.png"
+    imageName: "razvitiye.webp"
   },
 ]
 </script>

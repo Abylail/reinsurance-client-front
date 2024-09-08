@@ -2,10 +2,10 @@
   <div class="base-photo-input">
 
     <div class="base-photo-input__list" :class="{disabled: isLoading}">
-      <div class="base-photo-input__item" :style="{height: imageSize, width: imageSize}" v-for="(imageBuffer, index) in selfValue" :key="imageBuffer">
-        <img class="base-photo-input__image" :src="imageBuffer"/>
+      <div class="base-photo-input__item" :style="{height: imageSize, width: imageSize}" v-for="(imagePath, index) in selfValue" :key="imagePath">
+        <img class="base-photo-input__image" :src="getImageUrl(imagePath)"/>
 <!--        <div class="base-photo-input__edit" @click.prevent="triggerInput()"><base-icon name="mdi-pencil"/></div>-->
-        <div class="base-photo-input__remove" @click.stop="removeHandle(index)"><base-icon name="mdi-close"/></div>
+        <div class="base-photo-input__remove" @click.stop="removeHandle(imagePath)"><base-icon name="mdi-close"/></div>
       </div>
       <div class="base-photo-input__add" :style="{height: imageSize, width: imageSize}" v-if="showPlus" @click.prevent="triggerInput()">
         <base-icon name="mdi-plus" size="36"/>
@@ -20,8 +20,9 @@
 import {computed, ref} from "vue";
 import {fileToBase64, resizeImage} from "../../helpers/file";
 import BaseIcon from "./BaseIcon";
+import {useRuntimeConfig} from "nuxt/app";
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["add", "remove", "update:modelValue"]);
 const props = defineProps({
   modelValue: {
     type: [String, Array],
@@ -85,11 +86,12 @@ const inputHandle = async (file) => {
 
   inputElement.value.value = "";
   if (!optimizedImage) return alert("Извините, не могу принять ваш файл :(")
-  emit("update:modelValue", [...(props.modelValue || []), optimizedImage]);
+  emit("add", base64File);
 }
 
+const config = useRuntimeConfig()
 const getImageUrl = (url) => {
-  return process.env.CDN_URL + url;
+  return config.public.CDN_URL + url;
 }
 
 // Вызвать инпут
@@ -98,16 +100,18 @@ const triggerInput = () => {
 };
 
 // Удалить
-const removeHandle = (imageIndex) => {
-  if (props.multiple) {
-    let newVal = [...props.modelValue];
-    newVal.splice(imageIndex, 1);
-    console.log(imageIndex, props.modelValue, newVal);
-    emit("update:modelValue", newVal);
-  }
-  else {
-    emit("update:modelValue", null);
-  }
+const removeHandle = (imagePath) => {
+  emit("remove", imagePath);
+
+  // if (props.multiple) {
+  //   let newVal = [...props.modelValue];
+  //   newVal.splice(imageIndex, 1);
+  //   console.log(imageIndex, props.modelValue, newVal);
+  //   emit("update:modelValue", newVal);
+  // }
+  // else {
+  //   emit("update:modelValue", null);
+  // }
 };
 </script>
 

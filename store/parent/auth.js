@@ -33,6 +33,9 @@ const getters = {
 
     // Город
     getCity: state => state.city || "almaty",
+
+    // Токен
+    getToken: state => state.clientData?.token || "",
 }
 
 const actions = {

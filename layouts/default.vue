@@ -15,9 +15,9 @@
   <auth-modal v-model:open="isAuthModal"/>
 
   <!-- Службв поддержки -->
-  <a class="default-layout__help" href="https://wa.me/77753862246" target="_blank" title="Помощь">
-    <base-icon name="mdi-chat-question-outline" size="30"/>
-  </a>
+<!--  <a class="default-layout__help" href="https://wa.me/77753862246" target="_blank" title="Помощь">-->
+<!--    <base-icon name="mdi-chat-question-outline" size="30"/>-->
+<!--  </a>-->
 
 </template>
 

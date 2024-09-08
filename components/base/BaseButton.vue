@@ -45,7 +45,7 @@ const props = defineProps({
   border: 1px solid transparent;
 
   &--type-default {
-    background-color: $color--blue;
+    background-color: $color--blue-dark;
     color: white;
   }
 

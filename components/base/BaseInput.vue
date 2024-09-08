@@ -167,6 +167,7 @@ $input-height: 32px;
     transition: $transition;
 
     &--top {
+      color: $color--gray-dark;
       font-size: $fs--nano;
       line-height: calc(#{$fs--nano} + 2px);
       top: 4px;

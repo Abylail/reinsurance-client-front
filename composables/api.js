@@ -1,4 +1,5 @@
 import {useRuntimeConfig, useRequestHeaders} from "nuxt/app";
+import {useAuthStore} from "~/store/parent/auth";
 
 // Обработка ошибок
 const apiErrorCatcher = error => {
@@ -11,9 +12,10 @@ const createPath = (path, config) => ((process.env.NODE_ENV === "production" && 
 
 // Создание опций
 const createOptions = (options = {}, method = "get") => {
+    const authStore = useAuthStore();
     return {
         credentials: "include",
-        headers: useRequestHeaders(["cookie"]),
+        headers: {...useRequestHeaders(["cookie"]), Authorization: authStore.getToken},
         ...options,
         method,
     }
