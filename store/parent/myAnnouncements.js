@@ -49,6 +49,7 @@ const actions = {
 
     // Обновление объявления
     async updateDraft(info) {
+        const authStore = useAuthStore();
         const { err, body } = await api.put(`/announcement/update/${info.id}`, {...info, city: authStore.getCity});
         return !err;
     },
