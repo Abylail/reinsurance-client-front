@@ -40,7 +40,7 @@ const isAuthModal = computed({
   set: (val) => {
     if (!authStore.isAuth) router.replace({query: {...route.query, login: undefined}})
     else if (route.query.login) router.push(route.query.login || "/");
-    else if (!val) router.replace({query: {...route.query, login: null}})
+    else if (!val) router.replace({query: {...route.query, login: undefined}})
   }
 })
 
