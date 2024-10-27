@@ -1,14 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  nitro: {
-    routeRules: {
-      '/api-client/**': {
-        proxy: process.env.BACKEND_URL_PROXY + "/**"
-      },
-    },
-    compressPublicAssets: true,
-  },
-
   experimental: undefined,
   app: {
     head: {
@@ -35,8 +26,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       BACKEND_URL: process.env.BACKEND_URL,
-      CDN_URL: process.env.CDN_URL,
-      MIXPANEL_TOKEN: process.env.MIXPANEL_TOKEN,
     }
   },
 
@@ -44,15 +33,14 @@ export default defineNuxtConfig({
     '@nuxtjs/device',
     '@pinia/nuxt',
     // 'nuxt-delay-hydration',
-    '@nuxt/image',
+    ['@nuxt/image', {
+      format: ['png', 'webp'],
+      dir: 'public/images'
+    }],
     ['nuxt-lazy-load', {
       loadingClass: "skeleton-loading"
     }],
   ],
-
-  image: {
-    dir: 'assets/images',
-  },
 
   delayHydration: {
     debug: process.env.NODE_ENV === "development",

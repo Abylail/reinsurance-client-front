@@ -1,5 +1,5 @@
 {
-  "name": "kidshop-client-front",
+  "name": "reinsurance-client-front",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
-    "@nuxt/image": "^1.0.0",
+    "@nuxt/image": "^1.8.1",
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
     "geoip-lite": "^1.4.10",

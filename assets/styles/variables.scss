@@ -1,21 +1,16 @@
 // Цвета
-$color--blue: #004BFF;
-$color--blue-light: #bbcefd;
-$color--blue-super-light: #ddeff5;
-$color--blue-dark: #0b3d78;
-$color--purple-dark: #252b60;
-$color--background-white: white;
-$color--black: #222222;
-$color--gray-light: #efefef;
-$color--gray: #d0d0d0;
-$color--gray-dark: #868686;
-$color--red: #df3030;
-$color--red-light: #a27171;
-$color--orange: #ea8742;
-$color--orange-light: #ffead9;
-$color--yellow: #ecc926;
-$color--green: #005400;
-$color--green-light: #c9e3d8;
+$color--font-black: black;
+$color--font-dark: #262626;
+$color--gray: #8c8c8c;
+$color--gray-light: #d0d0d0;
+$color--gray-lighter: #f3f3f3;
+$color--blue: #4361f7;
+$color--blue-light: #43A1F7;
+$color--blue-lighter: #EFF6FE;
+$color--purple: #4845EB;
+$color--purple-lighter: #EDECFD;
+$color--red: #eb454b;
+$color--red-lighter: #fdecec;
 
 // Скорость ани
 $transition: 0.15s;
@@ -24,8 +19,7 @@ $transition: 0.15s;
 $header-height: 60px;
 
 // Боковые отсупления
-$side-space-desktop: 25px;
-$side-space-mobile: 16px;
+$side-space: 1rem;
 
 // Максимальная ширина контенра
 $max-width: 1000px;
@@ -34,6 +28,6 @@ $max-width: 1000px;
 $fs--nano: 0.75rem;
 $fs--mini: 0.875rem;
 $fs--default: 1rem;
-$fs--title: 1.25rem;
 $fs--sub-title: 1.25rem;
-$fs--big-title: 1.5rem;
+$fs--title: 1.5rem;
+$fs--big-title: 1.75rem;

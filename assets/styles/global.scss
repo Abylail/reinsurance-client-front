@@ -5,7 +5,7 @@ html {
 
 body {
   margin: 0;
-  color: $color--black;
+  color: $color--font-black;
 }
 
 button {
@@ -22,6 +22,7 @@ a, button, input, textarea {
   outline: none;
   border: none;
   background: none;
+  color: inherit;
   &:active {
     -webkit-tap-highlight-color: transparent;
     tap-highlight-color: transparent;
@@ -42,107 +43,9 @@ h1, h2, h3, h4, p, pre {
   font-display: swap;
 }
 
-
-// Вспомогательные классы
-
-// Тайтл
-.title {
-  font-size: 20px;
-  line-height: 28px;
-  margin: 5px 0;
-}
-
-// Чипс
-.chip {
-  display: inline;
-  white-space: nowrap;
-  color: $color--blue-dark;
-  background: $color--gray-light;
-  padding: 6px 10px;
-  margin-bottom: 4px;
-  &:not(:last-child) {margin-right: 4px;}
-  border-radius: 16px;
-  font-size: $fs--mini;
-  transition: $transition;
-
-  &--outlined {
-    display: inline;
-    white-space: nowrap;
-    color: $color--blue;
-    border: 1px solid $color--blue;
-    padding: .25rem .5rem;
-    &:not(:last-child) {margin-right: 4px;}
-    margin-bottom: 4px;
-    border-radius: 16px;
-    font-size: $fs--mini;
-    transition: $transition;
-  }
-
-  &--blue {
-    color: white;
-    white-space: nowrap;
-    background: $color--blue;
-    border: 1px solid transparent;
-  }
-}
-
-// Задний фон синяя иллююстрация
-.background-blue-illustration {
-  background-image: url('~/assets/images/background-blue-illustration.svg');
-  background-size: cover;
-  background-color: $color--blue;
-}
-
-.no-scroll {
-  overflow: hidden;
-}
-
 .container {
-  width: calc(100% - 2*#{$side-space-mobile});
-  margin-left: auto !important;
-  margin-right: auto !important;
-  &--white {
-    box-sizing: content-box !important;
-    width: calc(100% - 2*#{$side-space-mobile});
-    padding: $side-space-mobile;
-    background-color: white;
-  }
-
-  &--thin {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-}
-
-.disabled {
-  opacity: .5;
-  pointer-events: none;
-}
-
-.skeleton-loading {
-  background: linear-gradient(90deg, $color--gray 25%, $color--gray-light 50%, $color--gray 75%);
-  background-size: 200% 100%;
-  animation: skeletonAnimation 2s infinite ease-in-out;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.dot-divider {
-  display: inline-block;
-  height: 5px;
-  width: 5px;
-  border-radius: 100%;
-  background: #222222b0;
-  content: "";
-  margin: 0 8px;
-}
-
-@keyframes skeletonAnimation {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  width: calc(100% - #{$side-space * 2});
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 $side-space;
 }
