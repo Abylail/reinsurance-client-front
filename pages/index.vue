@@ -8,7 +8,7 @@
           <h1 class="main-page__title">Перестрахование – это сложно. Мы делаем это легко.</h1>
           <p class="main-page__description">Мощная аналитика, упрощенные операции и лучшее сотрудничество с нашей платформой перестрахования для:</p>
         </div>
-        <NuxtImg class="main-page__image" src="landing/contract.png" alt="contract" v-if="$device.isDesktop"/>
+        <NuxtImg class="main-page__image" src="/images/landing/contract.png" alt="contract" v-if="$device.isDesktop"/>
       </div>
     </div>
 
@@ -53,7 +53,7 @@
       </div>
 
       <h3 class="main-page__sub-title">Подготовка данных</h3>
-      <NuxtImg class="main-page__image--nano" src="landing/ai.png"/>
+      <NuxtImg class="main-page__image--nano" src="/images/landing/ai.png"/>
       <p class="main-page__description">
         Наши ИИ модели позволяют предсказывать вероятность различных рисков, обеспечивая точные данные для принятия решений и снижения убытков.
         <br/><br/>
@@ -61,7 +61,7 @@
       </p>
 
       <h3 class="main-page__sub-title">Визуализация данных</h3>
-      <NuxtImg class="main-page__image--nano" src="landing/analytics.png"/>
+      <NuxtImg class="main-page__image--nano" src="/images/landing/analytics.png"/>
       <p class="main-page__description">
         Полная визуализация исходных данных и аналитики, вашим сотрудникам не надо переучиваться.
         <br/><br/>
@@ -69,7 +69,7 @@
       </p>
 
       <h3 class="main-page__sub-title">Сделки</h3>
-      <NuxtImg class="main-page__image--nano" src="landing/contract.png"/>
+      <NuxtImg class="main-page__image--nano" src="/images/landing/contract.png"/>
       <p class="main-page__description">
         Заключайте сделки внутри платформы быстро и безопасно.
         <br/><br/>
@@ -82,7 +82,7 @@
         <h2 class="main-page__title">Начните уже сейчас</h2>
         <p class="main-page__description">Если у вас остались вопросы, связитесь с нами</p>
         <button class="main-page__action-btn">Свяжитесь с нами</button>
-        <NuxtImg class="main-page__image--mini" src="landing/callCenter.png"/>
+        <NuxtImg class="main-page__image--mini" src="/images/landing/callCenter.png"/>
       </div>
     </div>
 

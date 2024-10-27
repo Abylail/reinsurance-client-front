@@ -35,7 +35,6 @@ export default defineNuxtConfig({
     // 'nuxt-delay-hydration',
     ['@nuxt/image', {
       format: ['png', 'webp'],
-      dir: 'public/images'
     }],
     ['nuxt-lazy-load', {
       loadingClass: "skeleton-loading"
