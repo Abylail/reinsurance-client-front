@@ -1,9 +1,9 @@
 module.exports = {
   apps: [
     {
-      name: 'shop',
+      name: 'reinsurance',
       exec_mode: 'cluster',
-      port: '3004',
+      port: '3005',
       instances: 1, // Or a number of instances
       script: '.output/server/index.mjs'
     }
